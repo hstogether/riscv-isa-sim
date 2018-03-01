@@ -61,7 +61,7 @@ void processor_t::parse_isa_string(const char* str)
     lowercase += std::tolower(*r);
 
   const char* p = lowercase.c_str();
-  const char* all_subsets = "imafdc";
+  const char* all_subsets = "imafdhc";
 
   max_xlen = 64;
   isa = reg_t(2) << 62;
@@ -76,7 +76,7 @@ void processor_t::parse_isa_string(const char* str)
   if (!*p) {
     p = all_subsets;
   } else if (*p == 'g') { // treat "G" as "IMAFD"
-    tmp = std::string("imafd") + (p+1);
+    tmp = std::string("imafdh") + (p+1);
     p = &tmp[0];
   } else if (*p != 'i') {
     bad_isa_string(str);
